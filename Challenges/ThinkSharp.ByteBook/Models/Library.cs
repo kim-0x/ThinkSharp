@@ -64,4 +64,14 @@ public class Library {
             };
         }
     }
+
+    public void DisplayBooks() {
+        var consoleTable = new LibraryConsole() {
+            ColumnWidth = 25,
+            ColumnNum = 4,
+            HeaderText = ["Title", "Author", "Page Count", "Category"],
+            BookCollection = GetBooks(),
+        };
+        consoleTable.Display();
+    }
 }

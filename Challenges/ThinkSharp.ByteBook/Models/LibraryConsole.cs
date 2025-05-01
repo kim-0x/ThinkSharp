@@ -1,8 +1,8 @@
-public class ConsoleTable {
+public class LibraryConsole {
     public int ColumnWidth {get; set;} = 25;
     public int ColumnNum {get; set; } = 4;
     public required string[] HeaderText {get; set;}
-    public required IEnumerable<Book> DataSource { get; set; }
+    public required IEnumerable<Book> BookCollection { get; set; }
     public void Display() {
         Border();
         Header();
@@ -33,7 +33,7 @@ public class ConsoleTable {
     }
 
     private void DataRows() {
-        foreach(var data in DataSource) {
+        foreach(var data in BookCollection) {
             var row = "";
             row += "|" + $"{data.Title}".PadRight(ColumnWidth);
             row += "|" + $"{data.Author}".PadRight(ColumnWidth);
