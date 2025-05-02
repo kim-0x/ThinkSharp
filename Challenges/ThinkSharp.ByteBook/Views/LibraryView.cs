@@ -1,6 +1,9 @@
-public class LibraryConsole {
+/**
+    View should be responsible for display or represent the data/model into output devices.
+    For example, console, windows forms, web, or IoT device.
+**/
+public class LibraryView {
     public int ColumnWidth {get; set;} = 25;
-    public int ColumnNum {get; set; } = 4;
     public required string[] HeaderText {get; set;}
     public required IEnumerable<Book> BookCollection { get; set; }
     public void Display() {
@@ -12,9 +15,10 @@ public class LibraryConsole {
     }
     private void Border() {
         var border = "";
-        for (int i = 0; i < ColumnNum; i++) {
+        var columnNum = HeaderText.Length;
+        for (int i = 0; i < columnNum; i++) {
             border += "+" + "".PadRight(ColumnWidth, '-');
-            if (i == ColumnNum - 1) {
+            if (i == columnNum - 1) {
                 border += "+";
             }
         }
