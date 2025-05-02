@@ -21,4 +21,16 @@ public class LibraryController {
     public void DisplayBooks() {
         _libraryView.Display(_libraryModel.Books);
     }
+
+    public void DisplayBookForm() {
+        BookFormView bookFormView = new BookFormView();
+        var book = bookFormView.GetBook();
+        _libraryModel.AddBook(book);
+
+        MessageView messageView = new()
+        {
+            Text = $"New book title {book.Title} is added."
+        };
+        messageView.Open();
+    }
 }
