@@ -5,20 +5,20 @@
 **/
 public class LibraryController {
     private readonly BookRepository _bookRepository;
+    private readonly Library _libraryModel = new Library();
+    private readonly LibraryView _libraryView = new LibraryView() {
+        ColumnWidth = 25,
+        HeaderText = ["Title", "Author", "Page Count", "Category"],
+    };
     public LibraryController(BookRepository bookRepository) {
         _bookRepository = bookRepository;
+
+        foreach(var book in _bookRepository.GetBooks()) {
+            _libraryModel.AddBook(book);
+        }
     }
 
     public void DisplayBooks() {
-        var model = new Library();
-        model.AddBooks(_bookRepository.GetBooks());
-        
-        var view = new LibraryView() {
-            ColumnWidth = 25,
-            HeaderText = ["Title", "Author", "Page Count", "Category"],
-            BookCollection = model.Books,
-        };
-
-        view.Display();
+        _libraryView.Display(_libraryModel.Books);
     }
 }

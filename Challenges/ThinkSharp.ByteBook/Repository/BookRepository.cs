@@ -60,6 +60,7 @@ public class BookRepository {
         var books = _source.Split("\n");
         foreach(var book in books) {
             var newBook = book.Split(",");
+
             yield return new Book() {
                 Title = newBook[0],
                 Author = newBook[1],

@@ -5,12 +5,11 @@
 public class LibraryView {
     public int ColumnWidth {get; set;} = 25;
     public required string[] HeaderText {get; set;}
-    public required IEnumerable<Book> BookCollection { get; set; }
-    public void Display() {
+    public void Display(IEnumerable<Book> books) {
         Border();
         Header();
         Border();
-        DataRows();        
+        DataRows(books);        
         Border();
     }
     private void Border() {
@@ -36,8 +35,8 @@ public class LibraryView {
         Console.WriteLine(headerColumns);
     }
 
-    private void DataRows() {
-        foreach(var data in BookCollection) {
+    private void DataRows(IEnumerable<Book> books) {
+        foreach(var data in books) {
             var row = "";
             row += "|" + $"{data.Title}".PadRight(ColumnWidth);
             row += "|" + $"{data.Author}".PadRight(ColumnWidth);
