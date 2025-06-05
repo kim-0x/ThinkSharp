@@ -9,7 +9,7 @@ public class BookFormView {
     public string LabelPageCount {get; private set; } = "Page Count: ";
     public int EntryPageCount {get; set; } = 0;
 
-    public string LabelCategory {get; private set; } = "Category (0 - 7): ";
+    public string LabelCategory {get; private set; } = "Category (0 - 8): ";
     public Category EntryCategory {get; set; } = 0;
     public BookFormView() {
         this.Load();
