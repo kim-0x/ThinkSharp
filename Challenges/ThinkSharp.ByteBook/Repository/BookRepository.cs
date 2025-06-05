@@ -59,13 +59,20 @@ public class BookRepository {
     public IEnumerable<Book> GetBooks() {
         var books = _source.Split("\n");
         foreach(var book in books) {
-            var newBook = book.Split(",");
+            if (string.IsNullOrWhiteSpace(book)) {
+                continue;
+            }
+
+            var newBook = book.Trim().Split(',');
+            if (newBook.Length < 4) {
+                continue;
+            }
 
             yield return new Book() {
-                Title = newBook[0],
-                Author = newBook[1],
-                PageCount = int.Parse(newBook[2]),
-                Category = Enum.Parse<Category>(newBook[3]),
+                Title = newBook[0].Trim(),
+                Author = newBook[1].Trim(),
+                PageCount = int.Parse(newBook[2].Trim()),
+                Category = Enum.Parse<Category>(newBook[3].Trim()),
             };
         }
     }
