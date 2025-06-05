@@ -51,11 +51,12 @@ public class Avengers : IEnumerator<string>
 
     public void Reset()
     {
+        _step = 0;
         Current = "";
     }
 
     public void Dispose()
     {
-        throw new NotImplementedException();
+        // nothing to clean up
     }
 }
