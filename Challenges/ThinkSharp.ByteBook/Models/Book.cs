@@ -14,7 +14,7 @@ public class Book {
         }
 
         if (PageCount < 0) {
-            throw new ArgumentOutOfRangeException("PageCount must be non-negative.");
+            throw new ArgumentOutOfRangeException("PageCount must be non‑negative.");
         }
     }
 }
